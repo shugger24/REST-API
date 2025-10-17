@@ -72,6 +72,8 @@ pip install fastapi uvicorn python-jose
 # Start the development server
 uvicorn main:app --reload
 
+# Then open the automatic Swagger UI documentation at:
+http://127.0.0.1:8000/docs
 
 Notes
 The application uses hardcoded credentials and a static JWT secret.
