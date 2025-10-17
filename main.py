@@ -24,7 +24,6 @@ class Type(Enum): # Enum for allowed item types
     hardware = "hardware"
     software = "software"
 
-
 class Item(BaseModel): # Pydantic model for incoming item data
     name: str # Item name
     preis: int = Field(100, gt=0, lt=2500) # Price with validation constraints (0 < preis < 2500)
@@ -47,11 +46,6 @@ async def login(data: OAuth2PasswordRequestForm = Depends()): # Automatically ex
         detail="Incorrect username or password",
         headers={"WWW-Authenticate": "Bearer"},
     )
-
-#@app.get("/items/")
-#async def show_all_items(token: str = Depends(oauth2_schema)):
-#    jwt.decode(token)
-#    return items
 
 @app.get("/items/")
 async def show_all_items(q: Optional[str] = None): # Optional query parameter 'q' for filtering
